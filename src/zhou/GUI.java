@@ -67,7 +67,6 @@ public class GUI {
 		JPanel jp2_1_3_1_1_2 = new JPanel();
 		JPanel jp2_1_3_1_2_1 = new JPanel();
 		JPanel jp2_1_3_1_2_2 = new JPanel();
-		JPanel jp3 = new JPanel();
 		
 		jp1.setLayout(new BorderLayout());
 		jp1_1.setLayout(new FlowLayout(FlowLayout.LEADING,10,10));
@@ -125,25 +124,10 @@ public class GUI {
 		jp2_1_3.add(t1);
 		jp2_1_3.add(t2);
 		
-//		JLabel l1_N = new JLabel("Download Mode��");
-//		JRadioButton rb1 = new JRadioButton("Real-time", true);
-//		JRadioButton rb2 = new JRadioButton("Period of time");
-//		ButtonGroup group = new ButtonGroup();
-//		group.add(rb1);
-//		group.add(rb2);
-//		jp_NORTH.add(l1_N);
-//		jp_NORTH.add(rb1);
-//		jp_NORTH.add(rb2);
-		
 		JButton b2 = new JButton("Download");
 		b2.setPreferredSize(new Dimension(50,25));
 		
-		b2.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Download.downloadRealTime(saveDir);
-			}
-		});
+		b2.addActionListener(e -> Download.downloadRealTime(saveDir));
 		
 		jp2_1_1.add(b2);
 		JPanel take1 = new JPanel();
@@ -151,18 +135,18 @@ public class GUI {
 		jp2_1_1.add(take1, BorderLayout.EAST);
 		jp2_1_1.add(take2, BorderLayout.WEST);
 		
-		JComboBox<Integer> year1 = new JComboBox<Integer>();
-		JComboBox<Integer> month1 = new JComboBox<Integer>();
-		JComboBox<Integer> day1 = new JComboBox<Integer>();
-		JComboBox<Integer> hour1 = new JComboBox<Integer>();
-		JComboBox<Integer> minute1 = new JComboBox<Integer>();
-		JComboBox<Integer> second1 = new JComboBox<Integer>();
-		JComboBox<Integer> year2 = new JComboBox<Integer>();
-		JComboBox<Integer> month2 = new JComboBox<Integer>();
-		JComboBox<Integer> day2 = new JComboBox<Integer>();
-		JComboBox<Integer> hour2 = new JComboBox<Integer>();
-		JComboBox<Integer> minute2 = new JComboBox<Integer>();
-		JComboBox<Integer> second2 = new JComboBox<Integer>();
+		JComboBox<Integer> year1 = new JComboBox<>();
+		JComboBox<Integer> month1 = new JComboBox<>();
+		JComboBox<Integer> day1 = new JComboBox<>();
+		JComboBox<Integer> hour1 = new JComboBox<>();
+		JComboBox<Integer> minute1 = new JComboBox<>();
+		JComboBox<Integer> second1 = new JComboBox<>();
+		JComboBox<Integer> year2 = new JComboBox<>();
+		JComboBox<Integer> month2 = new JComboBox<>();
+		JComboBox<Integer> day2 = new JComboBox<>();
+		JComboBox<Integer> hour2 = new JComboBox<>();
+		JComboBox<Integer> minute2 = new JComboBox<>();
+		JComboBox<Integer> second2 = new JComboBox<>();
 		for(int i = 2000;i < 2021;i++) {
 			year1.addItem(i);
 			year2.addItem(i);
@@ -226,7 +210,7 @@ public class GUI {
 				"ISU_SP3", "ISR_SP3","ISC_SP3",
 				"ISU_SUM", "ISR_SUM", "ISC7_SUM",
 				"ISU_TRO", "ISC_TRO"};
-		list = new JList<String>();
+		list = new JList<>();
 		list.setListData(items);
 		scrollPane.setViewportView(list);
 		
@@ -244,10 +228,8 @@ public class GUI {
 		select2.addItem("最终");
 		jp1_1.add(select1);
 		jp1_1.add(select2);
-		select1.addActionListener(e -> {
-			// TODO Auto-generated method stub
-			do_select_changed(e);
-		});
+		// TODO Auto-generated method stub
+		select1.addActionListener(GUI::doSelectChanged);
 
 		String[] items1 = new String[] {items[0], items[1], items[2]};
 		String[] items2 = new String[] {items[3], items[4], items[5], items[6]};
@@ -255,24 +237,19 @@ public class GUI {
 		String[] items4 = new String[] {items[9], items[10], items[11]};
 		String[] items5 = new String[] {items[12], items[13], items[14]};
 		String[] items6 = new String[] {items[15], items[16]};
-		JList<String> list1 = new JList<String>();
-		JList<String> list2 = new JList<String>();
-		JList<String> list3 = new JList<String>();
-		JList<String> list4 = new JList<String>();
-		JList<String> list5 = new JList<String>();
-		JList<String> list6 = new JList<String>();
+		JList<String> list1 = new JList<>();
+		JList<String> list2 = new JList<>();
+		JList<String> list3 = new JList<>();
+		JList<String> list4 = new JList<>();
+		JList<String> list5 = new JList<>();
+		JList<String> list6 = new JList<>();
 		list1.setListData(items1);
 		list2.setListData(items2);
 		list3.setListData(items3);
 		list4.setListData(items4);
 		list5.setListData(items5);
 		list6.setListData(items6);
-		JPanel jp1_1_1 = new JPanel();
-		JPanel jp1_1_2 = new JPanel();
-		JPanel jp1_1_3 = new JPanel();
-		JPanel jp1_1_4 = new JPanel();
-		JPanel jp1_1_5 = new JPanel();
-		JPanel jp1_1_6 = new JPanel();
+
 		JScrollPane scrollPanes1 = new JScrollPane();
 		JScrollPane scrollPanes2 = new JScrollPane();
 		JScrollPane scrollPanes3 = new JScrollPane();
@@ -298,54 +275,37 @@ public class GUI {
 		
 		JButton b1 = new JButton("Download");
 		b1.setPreferredSize(new Dimension(50,25));
-		b1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				List<Integer> timeDate1 = new ArrayList<>();
-				List<Integer> timeDate2 = new ArrayList<>();
-				timeDate1.add((Integer) year1.getSelectedItem());
-				timeDate1.add((Integer) month1.getSelectedItem());
-				timeDate1.add((Integer) day1.getSelectedItem());
-				timeDate1.add((Integer) hour1.getSelectedItem());
-				timeDate1.add((Integer) minute1.getSelectedItem());
-				timeDate1.add((Integer) second1.getSelectedItem());
-				timeDate2.add((Integer) year2.getSelectedItem());
-				timeDate2.add((Integer) month2.getSelectedItem());
-				timeDate2.add((Integer) day2.getSelectedItem());
-				timeDate2.add((Integer) hour2.getSelectedItem());
-				timeDate2.add((Integer) minute2.getSelectedItem());
-				timeDate2.add((Integer) second2.getSelectedItem());
-				
-//				List<Integer> temp2 = new ArrayList<>();
-//				List<Integer> temp1 = new ArrayList<>();
-//				temp1.add(2020);
-//				temp1.add(3);
-//				temp1.add(18);
-//				temp1.add(15);
-//				temp1.add(1);
-//				temp1.add(1);
-//				temp2.add(2020);
-//				temp2.add(3);
-//				temp2.add(20);
-//				temp2.add(15);
-//				temp2.add(50);
-//				temp2.add(1);
-				switch(selectFile) {
-				case "All_All":
-					Download.downloadList(list.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
-				case "钟差产品_All":
-					Download.downloadList(list1.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
-				case "地球自转参数产品_All":
-					Download.downloadList(list2.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
-				case "跟踪站地心坐标_All":
-					Download.downloadList(list3.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
-				case "轨道产品_All":
-					Download.downloadList(list4.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
-				case "总结信息产品_All":
-					Download.downloadList(list5.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
-				case "对流层产品_All":
-					Download.downloadList(list6.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
-				}
+		b1.addActionListener(e -> {
+			List<Integer> timeDate1 = new ArrayList<>();
+			List<Integer> timeDate2 = new ArrayList<>();
+			timeDate1.add((Integer) year1.getSelectedItem());
+			timeDate1.add((Integer) month1.getSelectedItem());
+			timeDate1.add((Integer) day1.getSelectedItem());
+			timeDate1.add((Integer) hour1.getSelectedItem());
+			timeDate1.add((Integer) minute1.getSelectedItem());
+			timeDate1.add((Integer) second1.getSelectedItem());
+			timeDate2.add((Integer) year2.getSelectedItem());
+			timeDate2.add((Integer) month2.getSelectedItem());
+			timeDate2.add((Integer) day2.getSelectedItem());
+			timeDate2.add((Integer) hour2.getSelectedItem());
+			timeDate2.add((Integer) minute2.getSelectedItem());
+			timeDate2.add((Integer) second2.getSelectedItem());
+
+			switch(selectFile) {
+			case "All_All":
+				Download.downloadList(list.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
+			case "钟差产品_All":
+				Download.downloadList(list1.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
+			case "地球自转参数产品_All":
+				Download.downloadList(list2.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
+			case "跟踪站地心坐标_All":
+				Download.downloadList(list3.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
+			case "轨道产品_All":
+				Download.downloadList(list4.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
+			case "总结信息产品_All":
+				Download.downloadList(list5.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
+			case "对流层产品_All":
+				Download.downloadList(list6.getSelectedValuesList(), timeDate1, timeDate2, saveDir);break;
 			}
 		});
 		
@@ -367,10 +327,10 @@ public class GUI {
 	}
 	
 	public static void main(String[] args) {
-		javax.swing.SwingUtilities.invokeLater(() -> createAndShowGUI());
+		javax.swing.SwingUtilities.invokeLater(GUI::createAndShowGUI);
 	}
 	
-	protected static void do_select_changed(ActionEvent e) {
+	protected static void doSelectChanged(ActionEvent e) {
 		selectFile = select1.getSelectedItem().toString() + "_" + select2.getSelectedItem().toString();
 		c1.show(cards, selectFile);
 	}
